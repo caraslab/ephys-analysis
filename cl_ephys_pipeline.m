@@ -69,6 +69,25 @@ cl_calcbehavmetrics(datadirectory)
 
 %Coming soon...
 
+%% 8. CLASSIFY UNITS AS REGULAR SPIKING (RS) or FAST SPIKING (FS)
+%This function does two things:
+%
+%First, it classifies single units as putative regular spiking (RS) and
+%putative fast spiking (FS) neurons based on the peak to peak duration of
+%the unit waveform. %RS neurons are putative pyramidal cells. FS neurons 
+%are putative PV+ inhibitory interneurons. 
+
+%Second, it plots a histogram of the peak-to-peak waveform duration for
+%all single units, across all days. This distribution should be examined 
+%before accepting any classification. If there is a bi-modal distribution, 
+%these claims can be made with slightly greater confidence. If there is a 
+%single distribution, it is not advised to trust the classification
+
+datadirectory = '/Users/Melissa/Desktop/Processed/';
+figdirectory = '/Users/Melissa/Desktop/Figures/';
+
+cl_unitclassification(datadirectory,figdirectory)
+
 %% Unique functions
 %Now that the data have been pre-processed by our standard pipeline, and
 %have been checked for errors, and have been cleaned up, it's time to do
