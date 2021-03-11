@@ -103,7 +103,11 @@ cl_unitclassification(datadirectory,figdirectory)
 %and behavior session (Saline or Muscimol). 
 datadirectory = '/Users/Melissa/Desktop/Processed/';
 figdirectory = '/Users/Melissa/Desktop/Figures/';
-whichunits = 'mua'; % 'mua' for just multi units, 'good' for just good units, 'all' for all units
+whichunits = 'FS';  % 'mua' for just multi units
+                    % 'good' for just single units
+                    % 'all' for all units
+                    % 'RS' for regular spiking units
+                    % 'FS' for fast spiking units
 
 
 lj_fig1(datadirectory,figdirectory,whichunits);

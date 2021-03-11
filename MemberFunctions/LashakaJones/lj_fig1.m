@@ -19,6 +19,8 @@ function lj_fig1(datadirectory,figdirectory,whichunits)
 %                       'good' for single units
 %                       'mua' for multi-units
 %                       'all' for both single and multi units
+%                       'RS' for regular spiking single units
+%                       'FS' for fast spiking single units
 %      
 %Written by ML Caras March 2021
 
@@ -83,11 +85,34 @@ for i = 1:numel(idx)
             %Do we want to include all units in the analysis?
             if ~strcmpi(whichunits,'all')
                 
-                %If not, is this unit the right kind?
-                if ~strcmpi(S(j).units(k).cluster_quality,whichunits)
+                %If not...
+                switch whichunits
                     
-                    %If not, skip this unit and move on to the next one.
-                    continue
+                    %If we simply wanted to look at single or multi
+                    %units...
+                    case {'good', 'mua'}
+                        
+                        %If the unit isn't the right kind, skip it
+                        if ~strcmpi(S(j).units(k).cluster_quality,whichunits)
+                            continue
+                        end
+                        
+                    %If we wanted to specifically look at regular spiking 
+                    %or fast spiking single units...    
+                    case {'RS','FS'}
+                        
+                        %If the unit isn't a single unit, skip it
+                        if ~strcmpi(S(j).units(k).cluster_quality,'good')
+                            continue
+                            
+                        %If it is a single unit...    
+                        elseif strcmpi(S(j).units(k).cluster_quality,'good')
+                            
+                            % Skip it if it's not the right kind
+                            if ~strcmpi(S(j).units(k).classification,whichunits)
+                                continue
+                            end
+                        end
                 end
             end
             
@@ -217,11 +242,15 @@ linkaxes([s11,s12])
 %Figure title
 switch whichunits
     case 'good'
-        ftitle = 'Single units';
+        ftitle = 'All single units';
     case 'mua'
         ftitle = 'Multi-units';
     case 'all'
         ftitle = 'Single and multi-units';
+    case 'RS'
+        ftitle = 'Regular spiking single units';
+    case 'FS'
+        ftitle = 'Fast spiking single units';
 end
 
 suptitle(ftitle);
