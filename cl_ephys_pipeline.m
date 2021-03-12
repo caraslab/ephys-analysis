@@ -62,12 +62,12 @@ datadirectory = '/Users/Melissa/Desktop/Processed/';
 
 cl_calcbehavmetrics(datadirectory)
 
-%% 7. FIT NEUROMETRIC DATA
+%% 7. FIT NEUROMETRIC DATA AND CALCULATE NEURAL THRESHOLDS
 
-%This is where we would call a function to fit the neurometric data and
-%calculate neural thresholds.
+datadirectory = '/Users/Melissa/Desktop/Processed/';
+figdirectory = '/Users/Melissa/Desktop/Figures/';
 
-%Coming soon...
+cl_fitneurometric(datadirectory,figdirectory);
 
 %% 8. CLASSIFY UNITS AS REGULAR SPIKING (RS) or FAST SPIKING (FS)
 %This function does two things:
