@@ -63,6 +63,9 @@ datadirectory = '/Users/Melissa/Desktop/Processed/';
 cl_calcbehavmetrics(datadirectory)
 
 %% 7. FIT NEUROMETRIC DATA AND CALCULATE NEURAL THRESHOLDS
+%This function generates neurometric fits of FR-based d' values as a
+%function of AM depth and calculates neural thresholds for each unit. Fits,
+%and thresholds are saved to the file. Plotted fits are saved.
 
 datadirectory = '/Users/Melissa/Desktop/Processed/';
 figdirectory = '/Users/Melissa/Desktop/Figures/';
